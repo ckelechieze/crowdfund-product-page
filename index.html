@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <!--Tailwind link-->
+  <link rel="stylesheet" href="./src/output.css"> 
+
+  <!--Font Awesome Link-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <title>Frontend Mentor | Crowdfunding product page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 0.6875rem; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!--HERO-->
+<section>
+  <!--Hero Image-->
+  <div class="relative">
+    <img class="w-full" src="./images/image-hero-mobile.jpg" alt="hero-image">
+    <!--Overlay Header-->
+    <div class="flex items-center justify-between absolute top-4 left-0 w-full px-6">
+      <!--logo-->
+      <h1 class="text-xl text-white font-bold">crowdfund</h1>
+      <!--hamburger-->
+      <button>
+        <i id="menu-button" class="fa-solid fa-bars text-white text-xl"></i>
+        <!--<i class="fa-solid fa-xmark"></i>-->
+      </button>
+    </div>
+
+    <!--mobile menu-->
+    <div id="mobile-menu" class="hidden absolute top-16 left-1/2 -translate-x-1/2 bg-white w-[80%] rounded-lg pl-4 py-4">
+      <ul class="flex flex-col gap-4">
+        <li class="hover:text-[#3baea6] hover:translate-x-1.5 transition-all duration-800"><a href="#" class="text-xm font-semibold">About</a></li>
+        <hr class="w-[90%] border-gray-200">
+        <li class="hover:text-[#3baea6] hover:translate-x-1.5 transition-all duration-800"><a href="#" class="text-xm font-semibold">Discover</a></li>
+        <hr class="w-[90%] border-gray-200">
+        <li class="hover:text-[#3baea6] hover:translate-x-1.5 transition-all duration-800"><a href="#" class="text-xm font-semibold">Get Started</a></li>
+        </ul>
+    </div>
+  </div>
+
+  
+
+  <!--Hero Card-->
+  <div class="w-[90%] bg-gray-500 mx-auto absolute left-1/2 -translate-x-1/2 top-[250px] rounded-[8px]">
+    <img class="absolute left-1/2 -translate-x-1/2 top-[-25px]" src="./images/logo-mastercraft.svg" alt="logo">
+    <!--text-->
+    <div>
+      <h2 class="text-xl font-bold text-center mb-4 mt-12 px-12">Mastercraft Bamboo Monitor Riser</h2>
+      <p class="text-[#d5d5d5] text-center mb-4">A beautifully handcrafted monitor stand to reduce neck and eye strain</p>
+    </div>
+    <!--buttons/image-->
+    <div class="flex items-center justify-center gap-2 mb-10">
+      <button class="bg-[#3baea6] text-white font-semibold px-8 py-3 rounded-full">Back this project</button>
+      <img src="./images/icon-bookmark.svg" alt="">
+    </div>
+  </div>
+</section>
+
+<!--JAVASCRIPT-->
+<script>
+  //grabbing elements by ID's
+  const menuBtn = document.getElementById("menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  //clicking on menuBtn
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+    menuBtn.classList.toggle("fa-bars");
+    menuBtn.classList.toggle("fa-xmark");
+  })
+
+  //<i class="fa-solid fa-bars text-white text-xl"></i>
+        //<!--<i class="fa-solid fa-xmark"></i>-->
+</script>
+</body>
+</html>
