@@ -37,7 +37,6 @@
       <!--hamburger-->
       <button class="z-11">
         <i id="menu-button" class="fa-solid fa-bars text-white text-xl"></i>
-        <!--<i class="fa-solid fa-xmark"></i>-->
       </button>
     </div>
 
@@ -68,8 +67,76 @@
     </div>
     <!--buttons/image-->
     <div class="flex items-center justify-center gap-2 mb-10">
-      <button class="bg-[#3baea6] text-white font-semibold px-8 py-3 rounded-full">Back this project</button>
+      <button id="project-button" class="bg-[#3baea6] text-white font-semibold px-8 py-3 rounded-full">Back this project</button>
       <img src="./images/icon-bookmark.svg" alt="">
+    </div>
+  </div>
+</section>
+
+<!--Modal/Overlay-->
+<section>
+  <div id="modal-overlay" class="hidden fixed inset-0 bg-black/50 flex justify-center items-start overflow-y-auto">
+    <!--modal contents-->
+    <div class="bg-white z-40 absolute w-[90%] top-20 left-1/2 -translate-x-1/2 rounded-[8px]  p-6">
+      <!--heading/cancel icon-->
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold">Back this project</h2>
+        <i id="modal-cancel" class="fa-solid fa-xmark font-bolder text-gray-500 text-xl"></i>
+      </div>
+
+      <p class="text-gray-400 text-lg mt-8">Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
+
+      <!--pledge card-->
+      <div class="p-6 border border-gray-200 mt-6 rounded-[8px]">
+        <!--radio/heading-->
+        <div class="flex gap-4">
+          <input class="w-[30px] h-[30px]" type="radio">
+          <h2 class="text-lg font-bold">Pledge with no reward</h2>
+        </div>
+        <p class="text-lg text-gray-400 mt-8">Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.</p>
+      </div>
+
+      <!--Bamboo stand-->
+      <div class="p-6 border border-gray-200 mt-6 rounded-[8px]">
+        <!--radio/heading-->
+        <div class="flex gap-4">
+          <input class="w-[30px] h-[30px]" type="radio">
+          <span>
+            <h2 class="text-lg font-bold">Bamboo Stand</h2>
+            <h2 class="text-lg font-bold text-[#3baea6]">Pledge $25 or more</h2>
+          </span>
+        </div>
+        <p class="text-lg text-gray-400 mt-8">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.</p>
+        <span class="flex gap-4 mb-8 mt-8 items-center justify-start"><h2 class="text-2xl font-bold">101</h2><p class="text-lg text-gray-400">left</p></span>
+      </div>
+
+      <!--Bamboo stand-->
+      <div class="p-6 border border-gray-200 mt-6 rounded-[8px]">
+        <!--radio/heading-->
+        <div class="flex gap-4">
+          <input class="w-[30px] h-[30px]" type="radio">
+          <span>
+            <h2 class="text-lg font-bold">Black Edition Stand</h2>
+            <h2 class="text-lg font-bold text-[#3baea6]">Pledge $75 or more</h2>
+          </span>
+        </div>
+        <p class="text-lg text-gray-400 mt-8">You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer memeber list. Shipping is included.</p>
+        <span class="flex gap-4 mb-8 mt-8 items-center justify-start"><h2 class="text-2xl font-bold">64</h2><p class="text-lg text-gray-400">left</p></span>
+      </div>
+      
+      <!--Mahogany-->
+      <div class="p-6 border border-gray-200 mt-6 rounded-[8px]">
+        <!--radio/heading-->
+        <div class="flex gap-4">
+          <input class="w-[30px] h-[30px]" type="radio">
+          <span>
+            <h2 class="text-lg text-gray-400 font-bold">Mahogany Special Edition</h2>
+            <h2 class="text-lg font-bold text-[#9dcdc9]">Pledge $200 or more</h2>
+          </span>
+        </div>
+        <p class="text-lg text-gray-300 mt-8">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included.</p>
+        <span class="flex gap-4 mb-8 mt-8 items-center justify-start"><h2 class="text-2xl text-gray-400 font-bold">0</h2><p class="text-lg text-gray-300">left</p></span>
+      </div>
     </div>
   </div>
 </section>
@@ -93,7 +160,10 @@
       <p class="text-gray-500">days left</p>
     </div>
 
-    <input id="slider" type="range" min="0" max="70" step="1" value="56" class=" slider w-full accent-teal-500 h-[20px]">
+    <!--progress bar-->
+    <div class="w-full h-4 bg-gray-200 rounded-full">
+      <div class="h-full w-[89.9%] bg-[#3baea6] rounded-full"></div>
+    </div>
   </div>
 
   <!--about-card-->
@@ -135,31 +205,31 @@
   const mobileMenu = document.getElementById("mobile-menu");
   const overlay = document.getElementById("overlay");
 
+  const backedAmount = 89914;
+  const goal = 100000;
+  const totalBackers = 5007;
+  const daysLeft = 56;
+
   //clicking on menuBtn
   menuBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
     menuBtn.classList.toggle("fa-bars");
     menuBtn.classList.toggle("fa-xmark");
     overlay.classList.toggle("hidden");
-  })
-  
-   //for slider color change
-      const slider = document.getElementById("slider");
-      function updateSlider() {
-        const percentage = ((Number(slider.value) - Number(slider.min)) /
-     (Number(slider.max) - Number(slider.min))) * 100;
+  });
 
-     slider.style.background = `linear-gradient(
-      to right,
-      #16d6c1 0%,
-      #16d6c1 ${percentage}%,
-      #c9d3e5 ${percentage}%,
-      #c9d3e5 100%
-  )`;
-      }
+    //clicking on projectBtn to open modal-overlay
+    const projectBtn = document.getElementById("project-button");
+    const modalOverlay = document.getElementById("modal-overlay");
+    const modalCancel = document.getElementById("modal-cancel");
+    
+    projectBtn.addEventListener("click", () => {
+      modalOverlay.classList.remove("hidden");
+    });
 
-      slider.addEventListener("input", updateSlider);
-      updateSlider();
+    modalCancel.addEventListener("click", () => {
+      modalOverlay.classList.add("hidden");
+    });
 </script>
 </body>
 </html>
