@@ -23,6 +23,7 @@
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
 </head>
+
 <body class="bg-gray-100">
 
   <!--HERO-->
@@ -75,7 +76,7 @@
 
 <!--Modal/Overlay-->
 <section>
-  <div id="modal-overlay" class="hidden fixed inset-0 bg-black/50 flex justify-center items-start overflow-y-auto">
+  <div id="modal-overlay" class="hidden fixed inset-0 bg-black/50 flex justify-center items-start overflow-y-auto z-30">
     <!--modal contents-->
     <div class="bg-white z-40 w-[85%] rounded-[8px] p-8 mt-24">
       <!--heading/cancel icon-->
@@ -86,21 +87,44 @@
 
       <p class="text-gray-400 text-lg mt-8">Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
 
-      <!--pledge card-->
-      <div class="p-6 border border-gray-200 mt-6 rounded-[8px]">
+      <!--No reward-->
+      <div id="no-reward-card" class="p-6 border border-gray-200 mt-6 rounded-[8px]">
         <!--radio/heading-->
         <div class="flex gap-4">
-          <input class="w-[30px] h-[30px]" type="radio">
+          <input id="no-reward-radio" class="w-[30px] h-[30px] accent-[#3baea6]" name="pledge" type="radio">
           <h2 class="text-lg font-bold">Pledge with no reward</h2>
         </div>
         <p class="text-lg text-gray-400 mt-8">Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.</p>
+
+        <!--No reward pledge section-->
+        <div id="no-reward-pledge" class="hidden border-t border-gray-200 mt-6 pt-6">
+         
+            <p class="text-gray-500 text-lg mb-4">Enter your pledge</p>
+
+            <div class="flex items-center justify-center gap-4">
+              <div class="relative">
+                <span class="absolute text-xl text-gray-400 top-1/2 -translate-y-1/2 left-4 px-auto">$</span>
+
+                <input 
+                type="number"
+                name="pledge"
+                value="75"
+                class="border border-gray-300 rounded-full px-4 py-2 pl-8 w-24 text-xl font-bold"
+                >
+              </div>
+              <button
+                class="bg-[#3baea6] text-white px-6 py-2 rounded-full">
+                Continue
+              </button>
+            </div>
+        </div>
       </div>
 
       <!--Bamboo stand-->
       <div class="p-6 border border-gray-200 mt-6 rounded-[8px]">
         <!--radio/heading-->
         <div class="flex gap-4">
-          <input class="w-[30px] h-[30px]" type="radio">
+          <input id="bamboo-radio" name="pledge" class="w-[30px] h-[30px] accent-[#3baea6]" type="radio">
           <span>
             <h2 class="text-lg font-bold">Bamboo Stand</h2>
             <h2 class="text-lg font-bold text-[#3baea6]">Pledge $25 or more</h2>
@@ -108,13 +132,36 @@
         </div>
         <p class="text-lg text-gray-400 mt-8">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.</p>
         <span class="flex gap-4 mb-8 mt-8 items-center justify-start"><h2 class="text-2xl font-bold">101</h2><p class="text-lg text-gray-400">left</p></span>
+
+        <!--Bamboo pledge section-->
+        <div id="bamboo-pledge" class="hidden border-t border-gray-200 mt-6 pt-6">
+         
+            <p class="text-gray-500 text-lg mb-4">Enter your pledge</p>
+
+            <div class="flex items-center justify-center gap-4">
+              <div class="relative">
+                <span class="absolute text-xl text-gray-400 top-1/2 -translate-y-1/2 left-4 px-auto">$</span>
+
+                <input 
+                type="number"
+                name="pledge"
+                value="25"
+                class="border border-gray-300 rounded-full px-4 py-2 pl-8 w-24 text-xl font-bold"
+                >
+              </div>
+              <button
+                class="bg-[#3baea6] text-white px-6 py-2 rounded-full">
+                Continue
+              </button>
+            </div>
+        </div>
       </div>
 
-      <!--Bamboo stand-->
-      <div class="p-6 border border-gray-200 mt-6 rounded-[8px]">
+      <!--Black Edition Stand-->
+      <div id="black-edition-card" class="p-6 border border-gray-200 mt-6 rounded-[8px]">
         <!--radio/heading-->
         <div class="flex gap-4">
-          <input class="w-[30px] h-[30px]" type="radio">
+          <input id="black-edition-radio" class="w-[30px] h-[30px] accent-[#3baea6]" name="pledge" type="radio">
           <span>
             <h2 class="text-lg font-bold">Black Edition Stand</h2>
             <h2 class="text-lg font-bold text-[#3baea6]">Pledge $75 or more</h2>
@@ -122,13 +169,36 @@
         </div>
         <p class="text-lg text-gray-400 mt-8">You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer memeber list. Shipping is included.</p>
         <span class="flex gap-4 mb-8 mt-8 items-center justify-start"><h2 class="text-2xl font-bold">64</h2><p class="text-lg text-gray-400">left</p></span>
+
+        <!--Black edition pledge section-->
+        <div id="black-edition-pledge" class="hidden border-t border-gray-200 mt-6 pt-6">
+         
+            <p class="text-gray-500 text-lg mb-4">Enter your pledge</p>
+
+            <div class="flex items-center justify-center gap-4">
+              <div class="relative">
+                <span class="absolute text-xl text-gray-400 top-1/2 -translate-y-1/2 left-4 px-auto">$</span>
+
+                <input 
+                type="number"
+                name="pledge"
+                value="75"
+                class="border border-gray-300 rounded-full px-4 py-2 pl-8 w-24 text-xl font-bold"
+                >
+              </div>
+              <button
+                class="bg-[#3baea6] text-white px-6 py-2 rounded-full">
+                Continue
+              </button>
+            </div>
+        </div>
       </div>
       
-      <!--Mahogany-->
+      <!--Mahogany Card-->
       <div class="p-6 border border-gray-200 mt-6 rounded-[8px]">
         <!--radio/heading-->
         <div class="flex gap-4">
-          <input class="w-[30px] h-[30px]" type="radio">
+          <input class="w-[30px] h-[30px]" name="pledge" type="radio">
           <span>
             <h2 class="text-lg text-gray-400 font-bold">Mahogany Special Edition</h2>
             <h2 class="text-lg font-bold text-[#9dcdc9]">Pledge $200 or more</h2>
@@ -230,6 +300,47 @@
     modalCancel.addEventListener("click", () => {
       modalOverlay.classList.add("hidden");
     });
+
+    //clicking outside the modalOverlay to close the overlay
+    modalOverlay.addEventListener("click", (e) => {
+      if(e.target === modalOverlay) {
+        modalOverlay.classList.add("hidden");
+      }
+    });
+
+    //clicking bamboo-radio to show bamboo-pledge
+    const bambooRadio = document.getElementById("bamboo-radio");
+    const bambooPledge = document.getElementById("bamboo-pledge");
+    const bambooCard = document.getElementById("bamboo-card");
+    
+    bambooRadio.addEventListener("change", () => {
+      bambooPledge.classList.remove("hidden");
+      bambooCard.classList.remove("border-gray-200");
+      bambooCard.classList.add("border-[#3baea6]", "border-2");
+    });
+
+    //clicking black-edition-radio to show black-edition-pledge
+    const blackRadio = document.getElementById("black-edition-radio");
+    const blackPledge = document.getElementById("black-edition-pledge");
+    const blackCard = document.getElementById("black-edition-card");
+    
+    blackRadio.addEventListener("change", () => {
+      blackPledge.classList.remove("hidden");
+      blackCard.classList.remove("border-gray-200");
+      blackCard.classList.add("border-[#3baea6]", "border-2");
+    });
+
+    //clicking black-edition-radio to show black-edition-pledge
+    const rewardRadio = document.getElementById("no-reward-radio");
+    const rewardPledge = document.getElementById("no-reward-pledge");
+    const rewardCard = document.getElementById("no-reward-card");
+    
+    rewardRadio.addEventListener("change", () => {
+      rewardPledge.classList.remove("hidden");
+      rewardCard.classList.remove("border-gray-200");
+      rewardCard.classList.add("border-[#3baea6]", "border-2");
+    });
 </script>
+
 </body>
 </html>
