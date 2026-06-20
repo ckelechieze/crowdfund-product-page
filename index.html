@@ -106,6 +106,7 @@
                 <span class="absolute text-xl text-gray-400 top-1/2 -translate-y-1/2 left-4 px-auto">$</span>
 
                 <input 
+                id="reward-input"
                 type="number"
                 name="amount"
                 value="75"
@@ -113,6 +114,7 @@
                 >
               </div>
               <button
+                id="reward-continue"
                 class="bg-[#3baea6] text-white px-6 py-2 rounded-full">
                 Continue
               </button>
@@ -131,7 +133,10 @@
           </span>
         </div>
         <p class="text-lg text-gray-400 mt-8">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.</p>
-        <span class="flex gap-4 mb-8 mt-8 items-center justify-start"><h2 class="text-2xl font-bold">101</h2><p class="text-lg text-gray-400">left</p></span>
+        <span class="flex gap-4 mb-8 mt-8 items-center justify-start">
+          <h2 id="bamboo-left" class="text-2xl font-bold">101</h2>
+          <p class="text-lg text-gray-400">left</p>
+        </span>
 
         <!--Bamboo pledge section-->
         <div id="bamboo-pledge" class="hidden border-t border-gray-200 mt-6 pt-6">
@@ -142,14 +147,16 @@
               <div class="relative">
                 <span class="absolute text-xl text-gray-400 top-1/2 -translate-y-1/2 left-4 px-auto">$</span>
 
-                <input 
+                <input
+                id="bamboo-input" 
                 type="number"
                 name="amount"
                 value="25"
                 class="border border-gray-300 rounded-full px-4 py-2 pl-8 w-24 text-xl font-bold"
                 >
               </div>
-              <button
+              <button 
+                id="bamboo-continue"
                 class="bg-[#3baea6] text-white px-6 py-2 rounded-full">
                 Continue
               </button>
@@ -168,7 +175,10 @@
           </span>
         </div>
         <p class="text-lg text-gray-400 mt-8">You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer memeber list. Shipping is included.</p>
-        <span class="flex gap-4 mb-8 mt-8 items-center justify-start"><h2 class="text-2xl font-bold">64</h2><p class="text-lg text-gray-400">left</p></span>
+        <span class="flex gap-4 mb-8 mt-8 items-center justify-start">
+          <h2 id="black-left" class="text-2xl font-bold">64</h2>
+          <p class="text-lg text-gray-400">left</p>
+        </span>
 
         <!--Black edition pledge section-->
         <div id="black-edition-pledge" class="hidden border-t border-gray-200 mt-6 pt-6">
@@ -180,6 +190,7 @@
                 <span class="absolute text-xl text-gray-400 top-1/2 -translate-y-1/2 left-4 px-auto">$</span>
 
                 <input 
+                id="black-input"
                 type="number"
                 name="amount"
                 value="75"
@@ -187,6 +198,7 @@
                 >
               </div>
               <button
+                id="black-continue"
                 class="bg-[#3baea6] text-white px-6 py-2 rounded-full">
                 Continue
               </button>
@@ -216,17 +228,17 @@
   <!--price card-->
   <div class="flex flex-col items-center justify-center gap-8 mt-[270px] bg-white w-[90%] mx-auto rounded-[8px] px-16 py-6">
     <div class="flex flex-col items-center justify-center">
-      <h2 class="text-2xl font-bold">$89,914</h2>
+      <h2 id="backed-amount" class="text-2xl font-bold">$89,914</h2>
       <p class="text-gray-500">of $100,000 backed</p>
     </div>
 
     <div  class="flex flex-col items-center justify-center">
-      <h2 class="text-2xl font-bold">5,007</h2>
+      <h2 id="total-backers" class="text-2xl font-bold">5,007</h2>
       <p class="text-gray-500">total backers</p>
     </div>
 
     <div  class="flex flex-col items-center justify-center">
-      <h2 class="text-2xl font-bold">56</h2>
+      <h2 id="days-left" class="text-2xl font-bold">56</h2>
       <p class="text-gray-500">days left</p>
     </div>
 
@@ -275,10 +287,24 @@
   const mobileMenu = document.getElementById("mobile-menu");
   const overlay = document.getElementById("overlay");
 
-  const backedAmount = 89914;
-  const goal = 100000;
-  const totalBackers = 5007;
-  const daysLeft = 56;
+  const backedAmountEl = document.getElementById("backed-amount");
+  const totalBackersEl = document.getElementById("total-backers");
+  const bambooLeftEl = document.getElementById("bamboo-left");
+  const blackLeftEl = document.getElementById("black-left");
+
+  const rewardInput = document.getElementById("reward-input");
+  const bambooInput = document.getElementById("bamboo-input");
+  const blackInput = document.getElementById("black-input");
+  const rewardContinue = document.getElementById("reward-continue");
+  const bambooContinue = document.getElementById("bamboo-continue");
+  const blackContinue = document.getElementById("black-continue");
+
+  let backedAmount = 89914;
+  let goal = 100000;
+  let totalBackers = 5007;
+  let bambooLeft = 101;
+  let blackLeft = 64;
+  let daysLeft = 56;
 
   //clicking on menuBtn
   menuBtn.addEventListener("click", () => {
@@ -376,6 +402,44 @@
           card.classList.add("border-[#3baea6]", "border-2");
         }
       });
+    });
+
+    //updating the numbers
+    //updating bamboo numbers
+    bambooContinue.addEventListener("click", () => {
+      const pledgeAmount = Number(bambooInput.value);
+
+      backedAmount += pledgeAmount;
+      totalBackers++;
+      bambooLeft--;
+
+      backedAmountEl.textContent = `$${backedAmount.toLocaleString()}`;
+      totalBackersEl.textContent = totalBackers.toLocaleString();
+      bambooLeftEl.textContent = bambooLeft;
+    });
+
+    //updating No reward numbers
+    rewardContinue.addEventListener("click", () => {
+      const pledgeAmount = Number(rewardInput.value);
+
+      backedAmount += pledgeAmount;
+      totalBackers++;
+
+      backedAmountEl.textContent = `$${backedAmount.toLocaleString()}`;
+      totalBackersEl.textContent = totalBackers.toLocaleString();
+    });
+
+    //updating black numbers
+    blackContinue.addEventListener("click", () => {
+      const pledgeAmount = Number(blackInput.value);
+
+      backedAmount += pledgeAmount;
+      totalBackers++;
+      blackLeft--;
+
+      backedAmountEl.textContent = `$${backedAmount.toLocaleString()}`;
+      totalBackersEl.textContent = totalBackers.toLocaleString();
+      blackLeftEl.textContent = blackLeft;
     });
 </script>
 
