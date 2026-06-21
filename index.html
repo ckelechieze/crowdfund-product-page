@@ -244,7 +244,10 @@
 
     <!--progress bar-->
     <div class="w-full h-4 bg-gray-200 rounded-full">
-      <div class="h-full w-[89.9%] bg-[#3baea6] rounded-full"></div>
+      <div
+        id="progress-bar" 
+        class="w-[89.9%] h-full bg-[#3baea6] rounded-full"
+      </div>
     </div>
   </div>
 
@@ -298,6 +301,8 @@
   const rewardContinue = document.getElementById("reward-continue");
   const bambooContinue = document.getElementById("bamboo-continue");
   const blackContinue = document.getElementById("black-continue");
+
+  const progressBar = document.getElementById("progress-bar");
 
   let backedAmount = 89914;
   let goal = 100000;
@@ -416,6 +421,8 @@
       backedAmountEl.textContent = `$${backedAmount.toLocaleString()}`;
       totalBackersEl.textContent = totalBackers.toLocaleString();
       bambooLeftEl.textContent = bambooLeft;
+
+      updateProgressBar();
     });
 
     //updating No reward numbers
@@ -427,6 +434,8 @@
 
       backedAmountEl.textContent = `$${backedAmount.toLocaleString()}`;
       totalBackersEl.textContent = totalBackers.toLocaleString();
+
+      updateProgressBar();
     });
 
     //updating black numbers
@@ -440,7 +449,18 @@
       backedAmountEl.textContent = `$${backedAmount.toLocaleString()}`;
       totalBackersEl.textContent = totalBackers.toLocaleString();
       blackLeftEl.textContent = blackLeft;
+
+      updateProgressBar();
     });
+
+    // Updating Progess Bar
+    function updateProgressBar() {
+      const percentage = (backedAmount / goal) * 100;
+
+      progressBar.style.width = `${percentage}%`;
+    }
+
+    updateProgressBar();
 </script>
 
 </body>
